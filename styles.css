@@ -17,9 +17,25 @@ body {
     align-items: center;
     padding: 5px;
     flex-wrap: wrap;
-    
 }
 
+#reset {
+    margin: 10px;
+    background-color: #808080;
+    padding: 10px;
+    border: 8px solid #5A5A5A;
+    border-radius: 15px;
+    width: 7rem;
+    height: 4rem;
+    transition-duration: 0.4s;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    font-size: 20px;
+}
+
+#reset:hover {
+    background-color: red;
+}
 button {
     width: 7rem;
     height: 7rem;

@@ -2,10 +2,10 @@ const buttons = document.querySelectorAll('button');
 let playerScore = 0;
 let computerScore = 0;
 
+const resetBtn = document.querySelector('#reset');
 
-function disableButtons() {
-    
-}
+//refresh page for new game
+resetBtn.addEventListener('click',() => location.reload());
 
 function getComputerChoice() {
     let computerChoice = Math.floor(Math.random() * 3) + 1;
