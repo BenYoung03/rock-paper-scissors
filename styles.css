@@ -47,6 +47,7 @@ body {
     box-shadow: 0px 8px 0px 0px #999;
     cursor: pointer;
     flex-shrink: 1;
+    transition-duration: 50ms;
 }
 
 .game:active {
