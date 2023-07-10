@@ -1,4 +1,4 @@
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.game');
 let playerScore = 0;
 let computerScore = 0;
 
