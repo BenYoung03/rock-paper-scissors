@@ -6,6 +6,7 @@ let computerScore = 0;
 function disableButtons() {
     buttons.forEach(elem => {
         elem.disabled = true;
+        elem.style.backgroundColor = 'red';
     });
 }
 function getComputerChoice() {
@@ -33,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'Scissors' && computerSelection === 'Paper')
     ) {
         playerScore++;
-        score.textContent = `${playerScore} - ${computerScore}`;
+        player.textContent = `Score: ${playerScore}`;
         if(playerScore === 5){
             disableButtons();
             return `You win!`; 
@@ -47,7 +48,7 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'Scissors' && computerSelection === 'Rock')
     ) {
         computerScore++;
-        score.textContent = `${playerScore} - ${computerScore}`;
+        computer.textContent = `Score: ${computerScore}`;
         if(computerScore === 5){
             disableButtons();
             return `You lose!`; 
@@ -66,10 +67,18 @@ function playRound(playerSelection, computerSelection) {
     paperBtn.addEventListener('click', () => results.textContent =(playRound('paper', getComputerChoice())));
     scissorsBtn.addEventListener('click', () => results.textContent =(playRound('scissors', getComputerChoice())));    
 
-    const container = document.querySelector('.player-button-container');
-    const score = document.createElement('p');
-    score.classList.add('score');
-    score.textContent = `${playerScore} - ${computerScore}`;
-    score.style.color = 'red';
+    const playerContainer = document.querySelector('.player-button-container');
+    const player = document.createElement('p');
+    player.classList.add('score');
+    player.textContent = `Score: ${playerScore}`;
+    player.style.color = 'red';
 
-    container.appendChild(score);
+    playerContainer.appendChild(player);
+
+    const computerContainer = document.querySelector('.computer-button-container');
+    const computer = document.createElement('p');
+    computer.classList.add('score');
+    computer.textContent = `Score: ${computerScore}`;
+    computer.style.color = 'red';
+
+    computerContainer.appendChild(computer);
