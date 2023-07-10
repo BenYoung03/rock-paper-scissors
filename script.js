@@ -1,6 +1,8 @@
 const buttons = document.querySelectorAll('.game');
 let playerScore = 0;
 let computerScore = 0;
+let compWin = false;
+let computerChoice = 0;
 
 const resetBtn = document.querySelector('#reset');
 
@@ -8,26 +10,50 @@ const resetBtn = document.querySelector('#reset');
 resetBtn.addEventListener('click',() => location.reload());
 
 function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3) + 1;
-    compRockBtn.style.backgroundColor = 'white';
-    compPaperBtn.style.backgroundColor = 'white';
-    compScissorsBtn.style.backgroundColor = 'white';
+    computerChoice = Math.floor(Math.random() * 3) + 1;
     if (computerChoice === 1){
-        compRockBtn.style.backgroundColor = 'green';
         return 'Rock';
-    } else if (computerChoice === 2){
-        compPaperBtn.style.backgroundColor = 'green';
+    } else if (computerChoice === 2){   
         return 'Paper';
     } else if (computerChoice === 3){
-        compScissorsBtn.style.backgroundColor = 'green';
         return 'Scissors';
     }
 }
 
+function changeCompButtonColour() {
+    if (computerChoice === 1){
+        if(compWin === true) compRockBtn.style.backgroundColor = 'green'; 
+        else compRockBtn.style.backgroundColor = 'red'; 
+    }
+    if (computerChoice === 2){
+        if(compWin === true) compPaperBtn.style.backgroundColor = 'green'; 
+        else compPaperBtn.style.backgroundColor = 'red'; 
+    }
+    if (computerChoice === 3){
+        if(compWin === true) compScissorsBtn.style.backgroundColor = 'green'; 
+        else compScissorsBtn.style.backgroundColor = 'red'; 
+    }
+}
+
 function playRound(playerSelection, computerSelection) {
+
+    buttons.forEach(elem => {
+        elem.style.backgroundColor = 'white';
+    });
     playerSelection = playerSelection.charAt(0).toUpperCase() + playerSelection.slice(1);
 
     if (playerSelection === computerSelection) {
+        compWin = true;
+        if(playerSelection === 'Rock'){
+            rockBtn.style.backgroundColor = 'green';
+            changeCompButtonColour();
+        } else if (playerSelection === 'Paper') {
+            paperBtn.style.backgroundColor = 'green';
+            changeCompButtonColour();
+        }else {
+            scissorsBtn.style.backgroundColor = 'green';
+            changeCompButtonColour();
+        }
         return 'Draw!';
     }
 
@@ -37,7 +63,20 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'Scissors' && computerSelection === 'Paper')
     ) {
         playerScore++;
+        compWin = false;
         player.textContent = `Score: ${playerScore}`;
+
+        if(playerSelection === 'Rock'){
+            rockBtn.style.backgroundColor = 'green';
+            changeCompButtonColour();
+        } else if (playerSelection === 'Paper') {
+            paperBtn.style.backgroundColor = 'green';
+            changeCompButtonColour();
+        }else {
+            scissorsBtn.style.backgroundColor = 'green';
+            changeCompButtonColour();
+        }
+
         if(playerScore === 5){
             buttons.forEach(elem => {
                 elem.disabled = true;
@@ -56,7 +95,20 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection === 'Scissors' && computerSelection === 'Rock')
     ) {
         computerScore++;
+        compWin = true;
         computer.textContent = `Score: ${computerScore}`;
+
+        if(playerSelection === 'Rock'){
+            rockBtn.style.backgroundColor = 'red';
+            changeCompButtonColour();
+        } else if (playerSelection === 'Paper') {
+            paperBtn.style.backgroundColor = 'red';
+            changeCompButtonColour();
+        }else {
+            scissorsBtn.style.backgroundColor = 'red';
+            changeCompButtonColour();
+        }
+
         if(computerScore === 5){
             buttons.forEach(elem => {
                 elem.disabled = true;
@@ -70,6 +122,7 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+// UI
 
 const rockBtn = document.getElementById('rock');
 const paperBtn = document.getElementById('paper');
