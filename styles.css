@@ -37,9 +37,6 @@ body {
     text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
 }
 
-#reset:hover {
-    background-color: red;
-}
 .game {
     width: 7rem;
     height: 7rem;
@@ -50,12 +47,7 @@ body {
     cursor: pointer;
 }
 
-.game:hover {
-    background-color: #808080;
-}
-
 .game:active {
-    background-color: #808080;
     box-shadow: 0 5px #666;
     transform: translateY(7px);
 }

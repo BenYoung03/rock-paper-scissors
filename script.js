@@ -175,6 +175,7 @@ const playerContainer = document.querySelector('.player-button-container');
 const player = document.createElement('p');
 player.classList.add('score');
 player.textContent = `Score: ${playerScore}`;
+
 player.style.color = 'red';
 
 playerContainer.appendChild(player);
