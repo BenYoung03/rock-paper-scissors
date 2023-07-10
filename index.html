@@ -8,32 +8,36 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<h1>Rock, Paper, Scissors!</h1>
-<div class="buttons">
-    <div class="player-button-container">
-        <p>PLAYER</p>
-        <button id="rock">
-            <div class="sign">✊</div>
-        </button>
-        <button id="paper">
-            <div class="sign">✋</div>
-        </button>
-        <button id="scissors">
-            <div class="sign">✌</div>
-        </button>
+    <audio id="click" src="sounds/click.wav"></audio>
+    <div class="upper">
+        <div class="header">Rock, Paper, Scissors!</div>
+        <div id="results"></div>
     </div>
-    <div class="computer-button-container">
-        <p>COMPUTER</p>
-        <button id="rock">
-            <div class="sign">✊</div>
-        </button>
-        <button id="paper">
-            <div class="sign">✋</div>
-        </button>
-        <button id="scissors">
-            <div class="sign">✌</div>
-        </button>
+    <div class="buttons">
+        <div class="player-button-container">
+            <p>PLAYER</p>
+            <button id="rock">
+                <div class="sign">✊</div>
+            </button>
+            <button id="paper">
+                <div class="sign">✋</div>
+            </button>
+            <button id="scissors">
+                <div class="sign">✌</div>
+            </button>
+        </div>
+        <div class="computer-button-container">
+            <p>COMPUTER</p>
+            <button id="rock-computer">
+                <div class="sign">✊</div>
+            </button>
+            <button id="paper-computer">
+                <div class="sign">✋</div>
+            </button>
+            <button id="scissors-computer">
+                <div class="sign">✌</div>
+            </button>
+        </div>
     </div>
-</div>
 </body>
 </html>
