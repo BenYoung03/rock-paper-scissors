@@ -4,10 +4,7 @@ let computerScore = 0;
 
 
 function disableButtons() {
-    buttons.forEach(elem => {
-        elem.disabled = true;
-        elem.style.backgroundColor = 'red';
-    });
+    
 }
 
 function getComputerChoice() {
@@ -42,7 +39,12 @@ function playRound(playerSelection, computerSelection) {
         playerScore++;
         player.textContent = `Score: ${playerScore}`;
         if(playerScore === 5){
-            disableButtons();
+            buttons.forEach(elem => {
+                elem.disabled = true;
+                elem.style.backgroundColor = 'green';
+            });
+            const audio = document.getElementById('win');
+            audio.play();
             return `You win!`; 
         }
         return `You win! ${playerSelection} beats ${computerSelection}`;
@@ -56,7 +58,12 @@ function playRound(playerSelection, computerSelection) {
         computerScore++;
         computer.textContent = `Score: ${computerScore}`;
         if(computerScore === 5){
-            disableButtons();
+            buttons.forEach(elem => {
+                elem.disabled = true;
+                elem.style.backgroundColor = 'red';
+            });
+            const audio = document.getElementById('loss');
+            audio.play();
             return `You lose!`; 
         }
         return `You lose! ${computerSelection} beats ${playerSelection}`;
@@ -72,9 +79,27 @@ const compPaperBtn = document.getElementById('paper-computer');
 const compScissorsBtn = document.getElementById('scissors-computer');
 const results = document.getElementById('results')
 
-rockBtn.addEventListener('click', () => results.textContent = (playRound('rock', getComputerChoice())));
-paperBtn.addEventListener('click', () => results.textContent =(playRound('paper', getComputerChoice())));
-scissorsBtn.addEventListener('click', () => results.textContent =(playRound('scissors', getComputerChoice())));    
+
+rockBtn.addEventListener('click', function() {
+    results.textContent = (playRound('rock', getComputerChoice()));
+    const audio = document.getElementById('click');
+    audio.currentTime = 0;
+    audio.play();
+});
+
+paperBtn.addEventListener('click', function() {
+    results.textContent = (playRound('paper', getComputerChoice()));
+    const audio = document.getElementById('click');
+    audio.currentTime = 0;
+    audio.play();
+});
+
+scissorsBtn.addEventListener('click', function() {
+    results.textContent = (playRound('scissors', getComputerChoice()));
+    const audio = document.getElementById('click');
+    audio.currentTime = 0;
+    audio.play();
+});
 
 const playerContainer = document.querySelector('.player-button-container');
 const player = document.createElement('p');
